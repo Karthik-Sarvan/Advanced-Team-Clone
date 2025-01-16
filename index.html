@@ -3,29 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="Cache-Control" content="no-cache">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="mobile-web-app-capable" content="yes">
-
-        <link rel="apple-touch-icon" href="logo.png">
-        <link rel="icon" href="logo.png">
-
-        <title>WebGL Fluid Simulation</title>
-        <meta name="description" content="A WebGL fluid simulation that works in mobile browsers.">
-
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="Webgl Fluid Simulation">
-        <meta property="og:description" content="A WebGL fluid simulation that works in mobile browsers.">
-        <meta property="og:url" content="https://paveldogreat.github.io/WebGL-Fluid-Simulation/">
-        <meta property="og:image" content="https://paveldogreat.github.io/WebGL-Fluid-Simulation/logo.png">
-
+        <title>Karthik</title>
+        <meta name="description" content="Karthik">
         <script type="text/javascript" src="dat.gui.min.js"></script>
         <style>
+            @import url("https://fonts.googleapis.com/css?family=Baloo+Paaji|Open+Sans:300,300i,400,400i,600,600i,700,700i");
             @font-face {
                 font-family: 'iconfont';
                 src: url('iconfont.ttf') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'HelveticaNeueCyr';
+                src: url('./helveticaneuecyr_IDH6V/HelveticaNeueCyr/HelveticaNeueCyr\ Medium/HelveticaNeueCyr\ Medium.ttf');
             }
 
             * {
@@ -33,7 +23,7 @@
             }
 
             html, body {
-                overflow: hidden;
+                overflow: hidden; /* Allow scroll control through .promo */
                 background-color: #000;
             }
 
@@ -45,180 +35,96 @@
             }
 
             canvas {
-                width: 100%;
-                height: 100%;
-            }
-
-            .dg {
-                opacity: 0.9;
-            }
-
-            .dg .property-name {
-                overflow: visible;
-            }
-
-            .bigFont {
-                font-size: 150%;
-                color: #8C8C8C;
-            }
-
-            .cr.function.appBigFont {
-                font-size: 150%;
-                line-height: 27px;
-                color: #A5F8D3;
-                background-color: #023C40;
-            }
-
-            .cr.function.appBigFont .property-name {
-                float: none;
-            }
-
-            .cr.function.appBigFont .icon {
-                position: sticky;
-                bottom: 27px;
-            }
-
-            .icon {
-                font-family: 'iconfont';
-                font-size: 130%;
-                float: right;
-            }
-
-            .twitter:before {
-                content: 'a';
-            }
-
-            .github:before {
-                content: 'b';
-            }
-
-            .app:before {
-                content: 'c';
-            }
-
-            .discord:before {
-                content: 'd';
+                width: 100%  !important;
+                height: 100% !important;
             }
 
             .promo {
-                display: none;
-                /* display: table; */
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                z-index: 1;
-                overflow: auto;
-                color: lightblue;
-                background-color: rgba(0,0,0,0.4);
-                animation: promo-appear-animation 0.35s ease-out;
+                z-index: 10;
+                background-color: transparent;
+                pointer-events: none;
             }
 
-            .promo-middle {
-                display: table-cell;
-                vertical-align: middle;
+            .pointer-auto {
+                pointer-events: auto;
+
             }
 
-            .promo-content {
-                width: 80vw;
-                height: 80vh;
-                max-width: 80vh;
-                max-height: 80vw;
-                margin: auto;
-                padding: 0;
-                font-size: 2.8vmax;
-                font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-                text-align: center;
-                background-image: url("promo_back.png");
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                border-radius: 15px;
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            .logo-font {
+                font-family: 'Baloo Paaji', serif;
             }
 
-            .promo-header {
-                height: 10%;
-                padding: 2px 16px;
+            .mainFont {
+                font-family: 'HelveticaNeueCyr', sans-serif;
+            }
+            /* remove scrollbar */
+            ::-webkit-scrollbar {
+                display: none;
             }
 
-            .promo-close {
-                width: 10%;
-                height: 100%;
-                text-align: left;
-                float: left;
-                font-size: 1.3em;
-                /* transition: 0.2s; */
-            }
-
-            .promo-close:hover {
-                /* transform: scale(1.25); */
-                cursor: pointer;
-            }
-
-            .promo-body {
-                padding: 8px 16px 16px 16px;
-                margin: auto;
-            }
-
-            .promo-body p {
-                margin-top: 0;
-                mix-blend-mode: color-dodge;
-            }
-
-            .link {
-                width: 100%;
-                display: inline-block;
-            }
-
-            .link img {
-                width: 100%;
-            }
-
-            @keyframes promo-appear-animation {
-                0% {
-                    transform: scale(2.0);
-                    opacity: 0;
-                }
-                100% {
-                    transform: scale(1.0);
-                    opacity: 1;
-                }
-            }
         </style>
+        <script src="https://cdn.tailwindcss.com"></script>
         <script>
-            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            window.ga = window.ga || function() { (ga.q = ga.q || []).push(arguments) }; ga.l = +new Date;
             ga('create', 'UA-105392568-1', 'auto');
             ga('send', 'pageview');
         </script>
         <script async src="https://www.google-analytics.com/analytics.js"></script>
     </head>
-    <body>
-        <canvas></canvas>
+    <body>        
 
-        <!-- Mother of God, pls forgive me -->
-        <div class="promo">
-            <div class="promo-middle">
-                <div class="promo-content">
-                    <div class="promo-header">
-                        <span class="promo-close">&times;</span>
-                    </div>
-                    <div class="promo-body">
-                        <p>Try Fluid Simulation app!</p>
-                        <div class="links-container">
-                            <a class="link" id="apple_link" target="_blank">
-                                <img class="link-img" alt="Download on the App Store" src="app_badge.png"/>
-                            </a>
-                            <a class="link" id="google_link" target="_blank">
-                                <img class="link-img" alt="Get it on Google Play" src="gp_badge.png"/>
-                            </a>
-                        </div>
-                    </div>
+        <div class="promo w-[100vw] text-white flex overflow-y-auto m-0 p-0 flex-col  ">
+            <nav class="w-[40vw] flex justify-around text-[#7d7d7d] font-medium mt-10 text-base ml-auto list-none">
+                <li class="cursor-pointer hover:text-white pointer-auto">Portfolio</li>
+                <li class="cursor-pointer hover:text-white pointer-auto">Blogs</li>
+                <li class="cursor-pointer hover:text-white pointer-auto">About</li>
+                <li class="cursor-pointer hover:text-white pointer-auto">Contact</li>              
+            </nav>
+            <main class="min-h-[100vh] px-10 pb-20 flex flex-col w-[45vw] justify-between"> 
+                <h1 class="text-[60px] leading-[70px] relative mainFont z-10">A Dreamer Breathing Life into Machines, Crafting Wonders Through Code.</h1>
+                <iframe src='https://my.spline.design/chips-3330c60399dbf35f80ea7ed7d5b23da4/' class="absolute w-[50vw] right-20 h-[70vh] " frameborder='0' width='100%' height='100%'></iframe>                
+                <div class="flex justify-between items-end">
+                    <h1 class="z-10">Scroll Down</h1>
+                    <p class="w-[70%] z-10">We pride ourselves on our ability to craft digital products that not only meet but exceed the expectations of our clients. With a wealth of experience and expertise in the field of digital product development, we understand how to design user-friendly interfaces that captivate and engage audiences.</p>
                 </div>
-            </div>
+            </main>
+            <section class="w-[100vw] !h-screen  justify-center items-center">
+                <h1 class="hover:bg-red-500 pointer-auto">About Us</h1>
+                <div class="w-full flex justify-between">
+                    <div>
+                        <h1>This is a Spidey</h1>
+                        <p>This spidey is a spidey called spidey so it is called spidey</p>
+                    </div>
+                    <iframe src='https://my.spline.design/robot4legstooncopy-5c46fb6cddf10dc4930408404ce9116b/' class="h-[40vw] w-full" ></iframe>
+
+                </div>
+            </section>
         </div>
 
+        <canvas class="z-1"></canvas>
         <script src="./script.js"></script>
+        <script>
+            // on scrolling on canvas reflects to the scrolling on the promo
+            const promo = document.querySelector('.promo');
+            const canvas1 = document.querySelector('canvas');
+
+            canvas1.addEventListener('wheel', (e) => {
+
+                // promo.scrollTop += e.deltaY;
+                //  smooth scroll
+                promo.scrollTo({
+                    top: promo.scrollTop + e.deltaY,
+                    behavior: 'smooth'
+                });
+
+                
+                
+            });
+        </script>
     </body>
 </html>
